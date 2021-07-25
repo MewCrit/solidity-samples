@@ -3,7 +3,7 @@
 ## Run this on Ethereum Remix https://remix.ethereum.org/   
 
 
-Copy paste his on Ehereum Remix
+Copy paste this on Ethereum Remix
 ```
 pragma solidity >=0.7.0 <0.9.0;
  
