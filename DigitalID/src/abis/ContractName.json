@@ -1,0 +1,318 @@
+{
+  "contractName": "ContractName",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback",
+      "payable": true
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.6.12+commit.27d51765\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"/C/repos/blockchain/digital-barangay-id/digital-id/src/contracts/ContractName.sol\":\"ContractName\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/repos/blockchain/digital-barangay-id/digital-id/src/contracts/ContractName.sol\":{\"keccak256\":\"0x2a5f30296c7328f4528d9d62751bf5460e47fa9eefa22410e4d65443bab5eeac\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3a40479fa010e22136b9d4ab96c31a511a3ce0b3fa680d9447de354cd62830b0\",\"dweb:/ipfs/QmQM6HYNE6Raps49uKjKmMLmvYqHfPxo8xPMcmP3JPANqW\"]}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603c80601d6000396000f3fe608060405200fea26469706673582212200f0ba8f7aa5694a9b511927fde54b7f360aca05e3f018fda6028c1dca90ae53764736f6c634300060c0033",
+  "deployedBytecode": "0x608060405200fea26469706673582212200f0ba8f7aa5694a9b511927fde54b7f360aca05e3f018fda6028c1dca90ae53764736f6c634300060c0033",
+  "immutableReferences": {},
+  "sourceMap": "60:174:0:-:0;;;88:28;;;;;;;;;;60:174;;;;;;",
+  "deployedSourceMap": "60:174:0:-:0;;;",
+  "source": "// SPDX-License-Identifier: MIT\r\npragma solidity 0.6.12;\r\n\r\ncontract ContractName {\r\n\r\n\tconstructor() public {\r\n\r\n\t}\r\n\r\n  // Fallback: reverts if Ether is sent to this smart contract by mistake\r\n  fallback() external payable {\r\n  }\r\n}",
+  "sourcePath": "C:/repos/blockchain/digital-barangay-id/digital-id/src/contracts/ContractName.sol",
+  "ast": {
+    "absolutePath": "/C/repos/blockchain/digital-barangay-id/digital-id/src/contracts/ContractName.sol",
+    "exportedSymbols": {
+      "ContractName": [
+        10
+      ]
+    },
+    "id": 11,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1,
+        "literals": [
+          "solidity",
+          "0.6",
+          ".12"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 10,
+        "linearizedBaseContracts": [
+          10
+        ],
+        "name": "ContractName",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "body": {
+              "id": 4,
+              "nodeType": "Block",
+              "src": "109:7:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 5,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 2,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "99:2:0"
+            },
+            "returnParameters": {
+              "id": 3,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "109:0:0"
+            },
+            "scope": 10,
+            "src": "88:28:0",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 8,
+              "nodeType": "Block",
+              "src": "225:6:0",
+              "statements": []
+            },
+            "documentation": null,
+            "id": 9,
+            "implemented": true,
+            "kind": "fallback",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "overrides": null,
+            "parameters": {
+              "id": 6,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "205:2:0"
+            },
+            "returnParameters": {
+              "id": 7,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "225:0:0"
+            },
+            "scope": 10,
+            "src": "197:34:0",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 11,
+        "src": "60:174:0"
+      }
+    ],
+    "src": "33:201:0"
+  },
+  "legacyAST": {
+    "attributes": {
+      "absolutePath": "/C/repos/blockchain/digital-barangay-id/digital-id/src/contracts/ContractName.sol",
+      "exportedSymbols": {
+        "ContractName": [
+          10
+        ]
+      },
+      "license": "MIT"
+    },
+    "children": [
+      {
+        "attributes": {
+          "literals": [
+            "solidity",
+            "0.6",
+            ".12"
+          ]
+        },
+        "id": 1,
+        "name": "PragmaDirective",
+        "src": "33:23:0"
+      },
+      {
+        "attributes": {
+          "abstract": false,
+          "baseContracts": [
+            null
+          ],
+          "contractDependencies": [
+            null
+          ],
+          "contractKind": "contract",
+          "documentation": null,
+          "fullyImplemented": true,
+          "linearizedBaseContracts": [
+            10
+          ],
+          "name": "ContractName",
+          "scope": 11
+        },
+        "children": [
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": true,
+              "kind": "constructor",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "overrides": null,
+              "scope": 10,
+              "stateMutability": "nonpayable",
+              "virtual": false,
+              "visibility": "public"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 2,
+                "name": "ParameterList",
+                "src": "99:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 3,
+                "name": "ParameterList",
+                "src": "109:0:0"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 4,
+                "name": "Block",
+                "src": "109:7:0"
+              }
+            ],
+            "id": 5,
+            "name": "FunctionDefinition",
+            "src": "88:28:0"
+          },
+          {
+            "attributes": {
+              "documentation": null,
+              "implemented": true,
+              "isConstructor": false,
+              "kind": "fallback",
+              "modifiers": [
+                null
+              ],
+              "name": "",
+              "overrides": null,
+              "scope": 10,
+              "stateMutability": "payable",
+              "virtual": false,
+              "visibility": "external"
+            },
+            "children": [
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 6,
+                "name": "ParameterList",
+                "src": "205:2:0"
+              },
+              {
+                "attributes": {
+                  "parameters": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 7,
+                "name": "ParameterList",
+                "src": "225:0:0"
+              },
+              {
+                "attributes": {
+                  "statements": [
+                    null
+                  ]
+                },
+                "children": [],
+                "id": 8,
+                "name": "Block",
+                "src": "225:6:0"
+              }
+            ],
+            "id": 9,
+            "name": "FunctionDefinition",
+            "src": "197:34:0"
+          }
+        ],
+        "id": 10,
+        "name": "ContractDefinition",
+        "src": "60:174:0"
+      }
+    ],
+    "id": 11,
+    "name": "SourceUnit",
+    "src": "33:201:0"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.6.12+commit.27d51765.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0xb5f581CdE2D7902A0EA3cc37150090Bad846e1f6",
+      "transactionHash": "0xad2fe24028c2772470ce49bd19721054ed583e77232e220d4d18654f531c78bd"
+    }
+  },
+  "schemaVersion": "3.4.0",
+  "updatedAt": "2021-05-22T16:31:27.898Z",
+  "networkType": "ethereum",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  }
+}
