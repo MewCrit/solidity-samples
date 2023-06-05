@@ -1,0 +1,11 @@
+{
+    "name" : "Charmander",
+    "image" : "https://link.storjshare.io/s/jx5vvtksjwibppijhhin4jy75rgq/pkmn-nfts%2Fimages%2F004_charmander.png?view=1",
+    "description" : "Charmander, the Lizard Pokémon. It has a flame on its tail, which burns brightly to indicate its health and emotions. If the flame on its tail goes out, it will die.",
+    "attributes": [
+        {
+          "trait_type": "Type",
+          "value": "Fire"
+        }
+      ]
+}

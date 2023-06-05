@@ -1,0 +1,11 @@
+{
+    "name" : "Squirtle",
+    "image" : "https://link.storjshare.io/s/jx5jkh43wlwynmpnmj2v2va4jsoa/pkmn-nfts%2Fimages%2F007_squirtle.png?view=1",
+    "description" : "Squirtle, the Tiny Turtle Pokémon. It shelters itself in its shell, then strikes back with spouts of water at every opportunity. The shell's rounded shape and grooves help minimize resistance in water, enabling this Pokémon to swim at high speeds.",
+    "attributes": [
+        {
+          "trait_type": "Type",
+          "value": "Water"
+        }
+      ]
+}
