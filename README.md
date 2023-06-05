@@ -9,3 +9,4 @@ Applications
 - Digital ID
 - Uniswap-Flashswap
 - Solidity with Python using Brownie
+- Basic NFT
