@@ -1,0 +1,11 @@
+{
+    "name" : "Bulbasaur",
+    "image" : "https://link.storjshare.io/s/jvp2uo54zxtnpfkxaxmptfj3zclq/pkmn-nfts%2Fimages%2F001_bulbasaur.png?view=1",
+    "description" : "Bulbasaur, the Seed Pokémon. It bears the seed of a plant on its back from birth. The seed slowly grows larger as the Pokémon absorbs nutrients from the soil.",
+    "attributes": [
+        {
+          "trait_type": "Type",
+          "value": "Grass/Poison"
+        }
+      ]
+}
