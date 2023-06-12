@@ -1,0 +1,36 @@
+{
+    "name" :"Avengers Beyond",
+    "image" : "",
+    "description" : "",
+    "attributes" :[
+          {
+            "trait_type" : "Unique ID",
+            "value": "123-23131313-313131331"
+          },
+          {
+            "trait_type": "LFTRB Rating",
+            "value": "M"
+          },
+          {
+            "trait_type": "Cinema Area",
+            "value": "1"
+          },  
+          {
+            "trait_type": "Screen time",
+            "value": "3 hours"
+          },
+          {
+            "trait_type": "Schedule",
+            "value": "3pm-6pm"
+          },
+          {
+            "trait_type": "Seat",
+            "value": "A1"
+          },
+          {
+            "trait_type": "Location",
+            "value": "SM Fairview Cinema"
+          }
+    ]
+
+}
