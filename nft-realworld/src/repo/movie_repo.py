@@ -24,6 +24,9 @@ class MovieRepositoryPlaceholder:
     def mint_nft_tickets(self, contract_address : str, seat : str, movie_id : str, token_uri : str, price :int):
         pass
 
+    def get_token_uri(self, token_id : int) -> str:
+        pass
+
 
 class MovieRepository(MovieRepositoryPlaceholder):
 
@@ -182,6 +185,25 @@ class MovieRepository(MovieRepositoryPlaceholder):
         except Exception as e:
              logger.error(f'Error occurred: {e}') 
              return ''
+        
+
+    def get_token_uri(self, token_id : int) -> str:
+        try:
+            web3 = get_web3_config()
+            tixer_contract_address = get_tixer_contract_address() 
+            
+            with open('../tixer/src/abi/Tixer.json') as f:
+                contract_json = json.load(f)  
+                contract_abi = contract_json['abi'] 
+            
+            movie_contract = web3.eth.contract(address=Web3.toChecksumAddress(tixer_contract_address), abi=contract_abi)
+            nft_url = movie_contract.functions.tokenURI(token_id).call()
+
+            return nft_url
+
+        except Exception as e:
+            logger.error(f'Error occured: {e}')
+            return ''
 
   
 

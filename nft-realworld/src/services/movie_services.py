@@ -50,25 +50,34 @@ class MovieServices:
 
 
     def mint_tickets(self, contact_address : str, secret_key : str, seat : str, movie_id : str) -> MovieDTO:
+        try:
+            
+            get_movie = self.movie_repo.get_movies_by_id(movie_id)
+            movie_name = f"{get_movie.movie_name}-{get_movie.id}"
 
-        get_movie = self.movie_repo.get_movies_by_id(movie_id)
-        movie_name = f"{get_movie.movie_name}-{get_movie.id}"
+            ticket_meta_data = transform_metadata(movie_name=movie_name, seat=seat, get_movie=get_movie)
+            convert_to_json = json.dumps(ticket_meta_data)
+            # file_name = f'{movie_name}.json'.replace(' ', '_')
 
-        ticket_meta_data = transform_metadata(movie_name=movie_name, seat=seat, get_movie=get_movie)
-        convert_to_json = json.dumps(ticket_meta_data)
-        file_name = f'{movie_name}.json'.replace(' ', '_')
+            urls = upload_to_pinata(convert_to_json)
+            id = self.movie_repo.mint_nft_tickets(contact_address, secret_key, seat, movie_id, urls, get_movie.price)
 
-        urls = upload_to_pinata(file_name, convert_to_json)
-        id = self.movie_repo.mint_nft_tickets(contact_address, secret_key, seat, movie_id, urls, get_movie.price)
-        
-        return urls
+            movie_dto = MovieDTO(movie_id= id, token_uri=urls)
 
-
-
-
+            return movie_dto
+        except Exception as e:
+            print(e)
+            return None
 
 
-def upload_to_pinata(file_name : str, json_data : Dict) -> str:
+    def get_token_uri(self, token_id : int) -> str:
+        return self.movie_repo.get_token_uri(token_id=token_id)
+
+
+
+
+
+def upload_to_pinata(json_data : Dict) -> str:
 
     pinata_url = os.environ.get('PINATA_URL')
     pinata_api_key = os.environ.get('PINATA_KEY')
@@ -77,11 +86,10 @@ def upload_to_pinata(file_name : str, json_data : Dict) -> str:
     headers = {
         'pinata_api_key': pinata_api_key,
         'pinata_secret_api_key': pinata_secret_ket,
+        'Content-Type': 'application/json'
     }
-
-    data_bytes = bytes(json.dumps(json_data).encode('utf-8'))
-    response = requests.post(f'{pinata_url}/pinning/pinFileToIPFS', 
-                                 files={"file": data_bytes}, 
+    response = requests.post(f'{pinata_url}/pinning/pinJSONToIPFS', 
+                                 json=json_data, 
                                  headers=headers)
         
     print(response.json())

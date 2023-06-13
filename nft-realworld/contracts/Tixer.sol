@@ -30,6 +30,8 @@ contract Tixer is ERC721URIStorage {
         string lftrbRatings;
     }
 
+    Movie[] public movieList;
+
     modifier ownerOnly() {
         require(msg.sender == owner, "Only the owner can perform this action");
         _;
@@ -86,6 +88,20 @@ contract Tixer is ERC721URIStorage {
             _lftrbRatings
         );
 
+        movieList.push(Movie(
+            _id,
+            _image,
+            _movieName,
+            _genre,
+            _price,
+            _tickets,
+            _maxTickets,
+            _cinemaArea,
+            _remarks,
+            _time,
+            _location,
+            _lftrbRatings));
+
         emit MovieAdded(movies[_id].id, movies[_id].movieName, "Movie added to mappings");
     }
 
@@ -95,6 +111,10 @@ contract Tixer is ERC721URIStorage {
 
     function getSeats(string memory _id) public view returns (string[] memory) {
         return seats[_id];
+    }
+
+    function getAllMovies() public view returns(Movie[] memory) {
+        return movieList;
     }
 
   

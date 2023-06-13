@@ -45,6 +45,31 @@ def test_add_movie():
         tixer.addMovies(movie_id, image, movie_name, genre, price, tickets, max_tickets, cinemaArea, remarks, time, location, lftrbRatings, {"from": non_owner_account})
 
 
+def test_get_all_movies():
+    account = accounts[0]
+    tixer = Tixer.deploy("TixerToken", "TXR", {"from": account})
+
+    movie_id = "some-random-guid"
+    image = 'https://i0.wp.com/aiptcomics.com/wp-content/uploads/2022/12/AVENBEYOND2023001_Cov-1.jpg'
+    movie_name = "Avengers Beyond"
+    genre = "Action"
+    price = 100
+    tickets = 10
+    max_tickets = 10
+    cinemaArea = 1
+    remarks = "Some remarks"
+    time = "3pm-6pm"
+    location = "Sm Fairview Cinemas"
+    lftrbRatings = "R-16"
+
+    # add movie test
+    tixer.addMovies(movie_id, image, movie_name, genre, price, tickets, max_tickets, cinemaArea, remarks, time, location, lftrbRatings, {"from": account})
+  
+    movies = tixer.getAllMovies()
+
+    assert len(movies) > 0
+    assert len(movies) is 1
+
 
 def test_mint_ticket():
     account = accounts[0]

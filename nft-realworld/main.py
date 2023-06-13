@@ -62,6 +62,18 @@ def add_movie():
           return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
 
 
+@app.route('/tix/movie/nft/<int:token_id>', methods=['GET'])
+def get_token(id : int):
+     try:
+
+          return jsonify({
+             "token_url" : movie_service.get_token_uri(id)
+            }), 200
+
+     except Exception as e:
+        return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
+
+
 @app.route('/tix/movie/<string:movie_id>', methods=['POST'])
 def buy_ticket(movie_id : str):
      try:
@@ -72,9 +84,13 @@ def buy_ticket(movie_id : str):
                secret_key=json_data['secret_key'],
                seat=json_data['seat'], 
                movie_id=movie_id )     
+          
+          if meta_data_url is None:
+              return jsonify({'message': 'Failed to buy ticket'}), 500    
 
           return jsonify({
-             "url" : meta_data_url
+             "movie_id" : meta_data_url.movie_id,
+             "token_url" : meta_data_url.token_uri
             }), 200
 
      except Exception as e:
