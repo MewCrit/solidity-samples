@@ -1,0 +1,54 @@
+/* src/components/HomePage.css */
+
+.home-page {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 120vh;
+    padding: 20px;
+    background: #f4f4f4; 
+    text-align: center;
+  }
+  
+
+.card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 100px 0 20px 0; 
+    padding: 20px;
+    background: #fff; 
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+  }
+  
+  
+  .card p {
+    flex: 2;
+    margin-right: 20px;
+  }
+  
+  .card img {
+    flex: 1;
+    max-width: 200px;
+  }
+  
+  .movie-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+  }
+  
+  .movie {
+    margin: 20px;
+    padding: 20px;
+    background: #fff; /* White background for each movie item */
+    border-radius: 10px; /* Rounded corners for each movie item */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Slight shadow for each movie item */
+  }
+  

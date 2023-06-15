@@ -1,7 +1,10 @@
+boto3==1.24.92
 Brownie==0.5.1
 eth_brownie==1.19.3
 Flask==2.2.3
+Flask_Cors==3.0.10
 injector==0.20.1
 pytest==6.2.5
 python-dotenv==1.0.0
+requests==2.28.1
 web3==5.31.3

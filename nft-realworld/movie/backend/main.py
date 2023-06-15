@@ -1,15 +1,19 @@
 from flask import Flask, jsonify, request
 from injector import Injector
+from flask_cors import CORS, cross_origin
 
 from src.domain.parameters.movie_parameters import MovieParameters
 from src.services.movie_services import MovieServices
 from src.deps.dependencies import AppModule
 from src.domain.parameters.ticket_parameters import TicketParameters
 
+
 injector = Injector(AppModule())
 movie_service = injector.get(MovieServices)
 
 app = Flask(__name__)
+CORS(app)
+
 
 @app.route('/tix/movie/<string:id>', methods=['GET'])
 def get_movie_by_id(id : str):
@@ -63,15 +67,41 @@ def add_movie():
 
 
 @app.route('/tix/movie/nft/<int:token_id>', methods=['GET'])
-def get_token(id : int):
-     try:
-
+def get_token(token_id : int):
+     try: 
+          
           return jsonify({
-             "token_url" : movie_service.get_token_uri(id)
+             "token_url" : movie_service.get_token_uri(token_id)
             }), 200
 
      except Exception as e:
         return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
+
+
+
+@app.route('/tix/movie', methods=['GET'])
+def get_all_movies():
+     try:
+          return jsonify({
+             "results" : movie_service.get_all_movies()
+            }), 200
+
+     except Exception as e:
+        return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
+
+
+@app.route('/tix/movie/token_uri/<string:movie_id>', methods=['POST'])
+def generate_token_uri(movie_id : str):
+    try:
+          seat = request.args.get('seat')
+          token_uri = movie_service.generate_token_uri(movie_id=movie_id, seat=seat)
+
+          return jsonify({
+            "results" : token_uri
+           }), 200
+    except Exception as e:
+        return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
+
 
 
 @app.route('/tix/movie/<string:movie_id>', methods=['POST'])
@@ -81,7 +111,6 @@ def buy_ticket(movie_id : str):
 
           meta_data_url = movie_service.mint_tickets(
                contact_address= json_data['contact_address'],
-               secret_key=json_data['secret_key'],
                seat=json_data['seat'], 
                movie_id=movie_id )     
           
@@ -96,6 +125,14 @@ def buy_ticket(movie_id : str):
      except Exception as e:
         return jsonify({'message': 'An error occurred: {}'.format(str(e))}), 500    
          
+
+
+
+
+
+
+
+
 
 
 

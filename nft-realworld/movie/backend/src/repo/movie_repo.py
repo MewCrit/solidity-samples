@@ -1,5 +1,6 @@
 import json
 import os
+from typing import List
 
 from venv import logger
 from web3 import Web3
@@ -25,6 +26,9 @@ class MovieRepositoryPlaceholder:
         pass
 
     def get_token_uri(self, token_id : int) -> str:
+        pass
+
+    def get_all_movies(self) -> List[Movie]:
         pass
 
 
@@ -66,7 +70,7 @@ class MovieRepository(MovieRepositoryPlaceholder):
                                             location, 
                                             lftrb_ratings).buildTransaction({
                                                 'chainId': 1337,  
-                                                'gas': 700000,
+                                                'gas': 5000000,
                                                 'gasPrice': web3.toWei('20', 'gwei'),
                                                 'nonce': nonce
                                             })
@@ -145,7 +149,7 @@ class MovieRepository(MovieRepositoryPlaceholder):
             return None
 
 
-    def mint_nft_tickets(self, contract_address : str, secret_key : str, seat : str, movie_id : str, token_uri : str, price :int):
+    def mint_nft_tickets(self, contract_address : str,  seat : str, movie_id : str, token_uri : str, price :int):
         try:
             web3 = get_web3_config()
             tixer_contract_address = get_tixer_contract_address() 
@@ -167,20 +171,20 @@ class MovieRepository(MovieRepositoryPlaceholder):
                 token_uri
             ).buildTransaction({
                   'chainId': 1337,  
-                  'gas': 700000,
+                  'gas': 5000000,
                   'gasPrice': web3.toWei('20', 'gwei'),
                   'nonce': nonce,
                   'value':wei
             })
         
-            signed_txn = web3.eth.account.signTransaction(txn_dict, secret_key)
+            signed_txn = web3.eth.account.signTransaction(txn_dict, '')
             tx_hash = web3.eth.sendRawTransaction(signed_txn.rawTransaction)
             tx_receipt = web3.eth.waitForTransactionReceipt(tx_hash)
 
             logger.info(f"System info: tx reciept: {tx_receipt['logs']}")
             print(tx_receipt['logs'])
 
-            return id
+            return movie_id
         
         except Exception as e:
              logger.error(f'Error occurred: {e}') 
@@ -206,6 +210,47 @@ class MovieRepository(MovieRepositoryPlaceholder):
             return ''
 
   
+    def get_all_movies(self) -> List[Movie]:
+        try:
+            web3 = get_web3_config()
+            contract_address = get_tixer_contract_address()
+
+            with open('../tixer/src/abi/Tixer.json') as f:
+                contract_json = json.load(f)  
+                contract_abi = contract_json['abi'] 
+
+            movie_contract = web3.eth.contract(address=Web3.toChecksumAddress(contract_address), abi=contract_abi)
+            movies = movie_contract.functions.getAllMovies().call()
+
+            movie_list = []
+
+            for movie in movies:
+
+                to_ether = web3.fromWei(movie[4], "ether")
+                movie_list.append(Movie(
+                     id= movie[0],
+                    image=movie[1],
+                    movie_name=movie[2],
+                    genre=movie[3],
+                    price=to_ether,
+                    tickets=movie[5],
+                    max_tickets=movie[6],
+                    cinema_area=movie[7],
+                    remarks=movie[8],
+                    time=movie[9],
+                    location=movie[10],
+                    lftrb_ratings=movie[11]
+                ))
+
+
+            return movie_list
+
+        except Exception as e:
+            logger.error(f'Error occurred: {e}') 
+            return None
+
+
+
 
 def get_web3_config() -> Web3:
     rpc_url = os.environ.get("RPC_URL")
