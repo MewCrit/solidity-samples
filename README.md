@@ -10,3 +10,5 @@ Applications
 - Uniswap-Flashswap
 - Solidity with Python using Brownie
 - Basic NFT
+- Realworld NFT
+- Play to Earn
